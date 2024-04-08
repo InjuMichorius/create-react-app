@@ -3,6 +3,8 @@ const app = express();
 const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
+const path = require("path"); // Import path module
+
 app.use(cors());
 
 const server = http.createServer(app);
@@ -29,6 +31,14 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("User Disconnected", socket.id);
   });
+});
+
+// Serve static files from the build directory
+app.use(express.static(path.join(__dirname, "build")));
+
+// Serve index.html for all other routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 server.listen(4242, () => {
