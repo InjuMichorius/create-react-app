@@ -1,0 +1,15 @@
+.image-slider-container {
+    display: flex;
+    gap: 25px;
+    padding: 50px 0 80px;
+    label {
+        cursor: pointer;
+    }
+    input[type="radio"] {
+        display: none;
+    }
+    img {
+        border-radius: 100%;
+        border: 5px solid #FFFCC1;
+    }
+}

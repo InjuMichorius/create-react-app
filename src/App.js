@@ -1,14 +1,22 @@
 import { useEffect, useState } from "react";
 import './index.scss'
-import Home from '../src/components/home'; // Import the Home component
+// import Home from './components/home';
+import NavBar from './components/navbar';
+import UserCreate from './components/user-create';
 
 function App() {
   const [items, setItems] = useState([]);
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
     fetch("/api/items")
       .then((res) => res.json())
       .then((data) => setItems(data));
+
+      const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
   }, []);
 
   function renderItems() {
@@ -25,8 +33,8 @@ function App() {
 
   return (
     <main>
-      <Home />
-      <h1>Example webshop</h1>
+      <NavBar />
+      {username === '' && <UserCreate />}
       {renderItems()}
     </main>
   );

@@ -1,5 +1,3 @@
-import '../styles/components/test.scss'
-
 function Home() {
 
   return (

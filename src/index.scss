@@ -1,8 +1,34 @@
-@import '../src/styles/pages/home.scss';
+//Pages
+@import "../src/styles/pages/user-create.scss";
+
+//Blocks
+@import "../src/styles/blocks/nav-bar.scss";
+
+//components
+@import "../src/styles/components/profile-image.scss";
+@import "../src/styles/components/image-slider.scss";
+@import "../src/styles/components/username-input.scss";
+
+@font-face {
+  font-family: "Arcade Adventure";
+  src: url("./assets/fonts/Kanit-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Arcade Adventure";
+    src: url("./assets/fonts/Kanit-Bold.ttf") format("truetype");
+  }
+
+:root {
+    --font: "Arcade Adventure";
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-    background-color: red;
-    div {
-        background-color: blue;
-    }
+  background-color: #369064;
 }
