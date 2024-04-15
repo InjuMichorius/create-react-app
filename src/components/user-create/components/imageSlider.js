@@ -8,17 +8,16 @@ function ImageSlider() {
 
   // Load the selected image ID from localStorage when the component mounts
   useEffect(() => {
-    const storedImageID = localStorage.getItem('image-id');
+    const storedImageID = localStorage.getItem('imageId');
     if (storedImageID) {
       setSelectedImage(storedImageID);
     }
   }, []);
 
-  // Function to handle changes in the selected image ID
   const handleImageChange = (event) => {
     const newImageID = event.target.value;
     setSelectedImage(newImageID);
-    localStorage.setItem('image-id', newImageID); // Store the selected image ID in localStorage
+    localStorage.setItem('imageId', newImageID); // Store the selected image ID in localStorage
   };
 
   return (

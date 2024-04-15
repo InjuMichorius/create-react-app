@@ -1,8 +1,10 @@
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useEffect, useState } from "react";
 import './index.scss'
 // import Home from './components/home';
 import NavBar from './components/navbar';
 import UserCreate from './components/user-create';
+import GameSelection from './components/game-selection';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -13,7 +15,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => setItems(data));
 
-      const storedUsername = localStorage.getItem('username');
+    const storedUsername = localStorage.getItem('username');
     if (storedUsername) {
       setUsername(storedUsername);
     }
@@ -32,11 +34,19 @@ function App() {
   }
 
   return (
-    <main>
-      <NavBar />
-      {username === '' && <UserCreate />}
-      {renderItems()}
-    </main>
+    <Router>
+      <main>
+        <NavBar />
+        <Switch>
+          <Route exact path="/">
+            {username === '' && <UserCreate />}
+            <GameSelection />
+            {renderItems()}
+          </Route>
+          {/* Define other routes here */}
+        </Switch>
+      </main>
+    </Router>
   );
 }
 

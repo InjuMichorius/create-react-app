@@ -1,4 +1,4 @@
-// UsernameInput.jsx
+import Button from "../../button.js";
 import React, { useState } from 'react';
 
 function UsernameInput({ onSubmit }) {
@@ -19,7 +19,7 @@ function UsernameInput({ onSubmit }) {
     <form className="username-input-container" onSubmit={handleSubmit}>
       <input type="text" id="username" minLength="3" maxLength="6" value={inputValue} onChange={handleInputChange} />
       <label htmlFor="username" className={inputValue ? 'active' : ''}>Username</label>
-      <input type="submit" value="Start" />
+      <Button isInput={true} type="submit" value="Start" />
     </form>
   );
 }

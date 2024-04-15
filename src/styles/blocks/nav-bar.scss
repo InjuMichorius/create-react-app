@@ -1,11 +1,11 @@
 .nav-bar-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 15px;
-    height: 100px;
-    background-color: #6ECEA0;
-    &__logo {
-        height: 50px;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  height: 100px;
+  background-color: #6ecea0;
+  &__logo {
+    height: 50px;
+  }
 }

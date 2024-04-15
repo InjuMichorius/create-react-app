@@ -4,54 +4,38 @@ import character2 from '../../../assets/images/character2.jpg';
 import character3 from '../../../assets/images/character3.jpg';
 
 function ProfileImage() {
-  const [points, setPoints] = useState(0);
-  const [imageId, setImageId] = useState('');
+  let [points, setPoints] = useState(localStorage.getItem('points'));
+  let [imageId, setImageId] = useState(localStorage.getItem('imageId'));
+  const [refreshKey, setRefreshKey] = useState(0); // State variable to force component re-render
 
   useEffect(() => {
-    // Fetch points from localStorage when the component mounts
-    const storedPoints = localStorage.getItem('points');
-    if (storedPoints) {
-      setPoints(parseInt(storedPoints)); // Convert to integer
-    }
-
-    // Fetch image-id from localStorage when the component mounts
-    const storedImageId = localStorage.getItem('image-id');
-    if (storedImageId) {
-      setImageId(storedImageId);
-    }
-
-    // Listen for changes to localStorage points
-    const handlePointsChange = () => {
-      const updatedPoints = localStorage.getItem('points');
-      if (updatedPoints) {
-        setPoints(parseInt(updatedPoints)); // Update points state
-      }
+    // This effect will run whenever local storage changes
+    const handleStorageChange = () => {
+      // Increment the key to force re-render
+      setRefreshKey(prevKey => prevKey + 1);
+      console.log('This effect will run whenever local storage changes');
+      setPoints(localStorage.getItem('points'));
+      setImageId(localStorage.getItem('imageId'));
     };
 
-    // Listen for changes to localStorage image-id
-    const handleImageIdChange = () => {
-      const updatedImageId = localStorage.getItem('image-id');
-      if (updatedImageId) {
-        setImageId(updatedImageId); // Update imageId state
-      }
-    };
+    // Listen for changes in local storage
+    window.addEventListener('storage', handleStorageChange);
+  }, []); // This effect runs only once when the component mounts
 
-    window.addEventListener('storage', handlePointsChange);
-    window.addEventListener('storage', handleImageIdChange);
-
-    // Cleanup function
-    return () => {
-      window.removeEventListener('storage', handlePointsChange);
-      window.removeEventListener('storage', handleImageIdChange);
-    };
-  }, []); // Empty dependency array ensures useEffect runs only once on mount
+  let selectedImage = null;
+  if (imageId === '1') {
+    selectedImage = character1;
+  } else if (imageId === '2') {
+    selectedImage = character2;
+  } else if (imageId === '3') {
+    selectedImage = character3;
+  }
+  console.log(selectedImage)
 
   return (
-    <div className="profile-image-container">
-      {imageId === '1' && <img src={character1} alt="Profile" className="profile-image-container__image" />}
-      {imageId === '2' && <img src={character2} alt="Profile" className="profile-image-container__image" />}
-      {imageId === '3' && <img src={character3} alt="Profile" className="profile-image-container__image" />}
-      <p className="profile-image-container__points">{points}pts</p>
+    <div key={refreshKey} className="profile-image-container"> {/* Use the refreshKey as the key to force re-render */}
+      {selectedImage && <img src={selectedImage} alt="Profile" className="profile-image-container__image" />}
+      <p className="profile-image-container__points">{points}{imageId}pts</p>
     </div>
   );
 }
