@@ -1,8 +1,8 @@
-function Button({ isInput, value, type }) {
+function Button({ isInput, value, type, onClick }) {
   if (isInput) {
     return <input type={type} value={value}/>;
   } else {
-    return <button>Play</button>;
+    return <button onClick={onClick}>Play</button>;
   }
 }
 
