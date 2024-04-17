@@ -4,6 +4,13 @@
   flex-direction: column;
   padding: 15px;
   width: 100%;
+  &__online-players {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
   &__game-wrapper {
     display: flex;
     align-items: center;

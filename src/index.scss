@@ -1,3 +1,28 @@
+@font-face {
+  font-family: "Arcade Adventure";
+  src: url("./assets/fonts/Kanit-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Arcade Adventure Bold";
+    src: url("./assets/fonts/Kanit-Bold.ttf") format("truetype");
+  }
+
+:root {
+    --font: "Arcade Adventure";
+    --font-bold: "Arcade Adventure Bold";
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #369064;
+}
+
 //Pages
 @import "../src/styles/pages/user-create.scss";
 @import "../src/styles/pages/game-selection.scss";
@@ -10,27 +35,3 @@
 @import "../src/styles/components/profile-image.scss";
 @import "../src/styles/components/image-slider.scss";
 @import "../src/styles/components/username-input.scss";
-
-@font-face {
-  font-family: "Arcade Adventure";
-  src: url("./assets/fonts/Kanit-Regular.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: "Arcade Adventure";
-    src: url("./assets/fonts/Kanit-Bold.ttf") format("truetype");
-  }
-
-:root {
-    --font: "Arcade Adventure";
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #369064;
-}
