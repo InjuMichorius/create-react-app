@@ -26,17 +26,17 @@ function App() {
     }
   }, []);
 
-  // function renderItems() {
-  //   return items.map((item, i) => {
-  //     return (
-  //       <div key={i}>
-  //         <h3>{item.name}</h3>
-  //         <p>Price: {item.price}</p>
-  //         <p>No bidding</p>
-  //       </div>
-  //     );
-  //   });
-  // }
+  function renderItems() {
+    return items.map((item, i) => {
+      return (
+        <div key={i}>
+          <h3>{item.name}</h3>
+          <p>Price: {item.price}</p>
+          <p>No bidding</p>
+        </div>
+      );
+    });
+  }
 
   return (
     <Router>
@@ -50,7 +50,7 @@ function App() {
           />
           <Route path="/word-scramble" element={<WordScramble />} />
         </Routes>
-        {/* {renderItems()} */}
+        {renderItems()}
       </main>
     </Router>
   );
